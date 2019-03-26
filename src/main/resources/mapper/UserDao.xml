@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.jarvis.giraffe.dao.UserDao">
+
+    <insert id="addUser" parameterType="User">
+        <selectKey keyProperty="id" order="AFTER" resultType="integer">
+            select last_insert_ID();
+        </selectKey>
+        insert into user (name, pass) values (#{name},#{pass})
+    </insert>
+    <update id="updateUserById">
+        update user set pass=#{pass} where id=#{id}
+    </update>
+    <delete id="delUserById">
+        delete from user where id=#{id}
+    </delete>
+    <select id="getUserById" resultType="team.jarvis.giraffe.model.User">
+        select * from user where id=#{id}
+    </select>
+    <select id="getUserByName" resultType="team.jarvis.giraffe.model.User">
+        select * from user where name=#{name}
+    </select>
+
+    <select id="getUserByNameAndPass" resultType="team.jarvis.giraffe.model.User">
+        select * from user where name=#{name} and pass=#{pass}
+    </select>
+</mapper>

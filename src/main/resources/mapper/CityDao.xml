@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team.jarvis.giraffe.dao.CityDao">
+    <insert id="addCity">
+        insert into city (name) values (#{name})
+    </insert>
+    <update id="updateCityById">
+        update city set name=#{name},pyName=#{pyName} where id=#{id}
+    </update>
+    <delete id="delCityById">
+        delete city where id=#{id}
+    </delete>
+    <select id="getCityById">
+        select * from city where id=#{id}
+    </select>
+</mapper>
